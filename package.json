@@ -1,6 +1,6 @@
 {
   "name": "nginx-template",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generate and update nginx configuration files for port forwarding traffic to Node.js servers with WebSocket support.",
   "keywords": [
     "nginx",
