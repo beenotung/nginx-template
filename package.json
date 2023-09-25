@@ -1,15 +1,44 @@
 {
   "name": "nginx-template",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Generate and update nginx configuration files for port forwarding traffic to Node.js servers with WebSocket support.",
+  "keywords": [
+    "nginx",
+    "configuration",
+    "cli",
+    "npx",
+    "node.js",
+    "websocket",
+    "http2",
+    "port-forwarding",
+    "server",
+    "http-server"
+  ],
+  "author": {
+    "name": "Beeno Tung",
+    "email": "aabbcc1241@yahoo.com.hk",
+    "url": "https://beeno-tung.surge.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/nginx-template.git"
+  },
+  "homepage": "https://github.com/beenotung/nginx-template#readme",
+  "bugs": {
+    "url": "https://github.com/beenotung/nginx-template/issues"
+  },
+  "main": "core.js",
+  "bin": {
+    "nginx-template": "./cli.js"
+  },
+  "files": [
+    "dist/core.js",
+    "cli.js"
+  ],
   "scripts": {
     "test": "tsc --noEmit",
     "build": "tsc -p ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.6.4",
     "ts-node": "^10.9.1",
