@@ -47,7 +47,7 @@ Waiting inputs from cli...
     content = makeConf(server_name, port)
   }
 
-  let dir = 'config.d'
+  let dir = localDir
   mkdirSync(dir, { recursive: true })
 
   let file = join(dir, filename)
@@ -78,7 +78,8 @@ $ sudo service nginx restart
   io.close()
 }
 
-let systemDir = '/etc/nginx/config.d'
+let localDir = 'nginx-conf.d'
+let systemDir = '/etc/nginx/conf.d'
 
 function readFromSystem(filename: string) {
   try {
