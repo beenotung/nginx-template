@@ -91,18 +91,26 @@ function readFromSystem(filename: string) {
   }
 }
 
+const ipv4_pattern = 'listen 443 ssl'
+const ipv6_pattern = 'listen [::]:443 ssl'
+
 function updateConf(content: string): string {
-  return content
-    .split('\n')
-    .map(line => {
-      let from = 'listen 443 ssl'
-      let to = 'listen 443 ssl http2'
-      if (line.includes(from) && !line.includes(to)) {
-        return line.replace(from, to)
-      }
-      return line
-    })
-    .join('\n')
+  let lines = content.split('\n')
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i]
+    if (
+      line.includes(ipv4_pattern) &&
+      !line.includes(ipv4_pattern + ' http2')
+    ) {
+      lines[i] = line.replace(ipv4_pattern, ipv4_pattern + ' http2')
+    } else if (
+      line.includes(ipv6_pattern) &&
+      !line.includes(ipv6_pattern + ' http2')
+    ) {
+      lines[i] = line.replace(ipv6_pattern, ipv6_pattern + ' http2')
+    }
+  }
+  return lines.join('\n')
 }
 
 function makeConf(server_name: string, port: number): string {
