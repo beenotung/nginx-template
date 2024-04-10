@@ -113,6 +113,8 @@ server {
 
   server_name ${server_name};
 
+  # client_max_body_size 1M;
+
   location / {
     proxy_pass http://localhost:${port};
     proxy_http_version 1.1;
